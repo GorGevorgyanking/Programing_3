@@ -8,9 +8,7 @@ class Amen {
         this.x1;
         this.multiply = 0;
 
-
     }
-
     newDirections() {
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -23,7 +21,6 @@ class Amen {
             [this.x + 1, this.y + 1]
         ];
     }
-
 
 
 
