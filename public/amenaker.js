@@ -7,7 +7,6 @@ class Amen {
         this.y1;
         this.x1;
         this.multiply = 0;
-
     }
     newDirections() {
         this.directions = [
