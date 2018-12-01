@@ -21,7 +21,7 @@ function setup() {
     }
 
 
-    frameRate(5);
+    frameRate(1);
     createCanvas(matrix[0].length * side, matrix.length * side);
 
     background('gray');

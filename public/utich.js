@@ -1,15 +1,10 @@
-/////////////////////////
-class Utox {
-    constructor(x, y, ind) {
-        this.index = ind;
-        this.x = x;
-        this.y = y;
+class Utox extends LivingCreature {
+    constructor(x, y, index) {
+        super(x, y, index);
         this.energy = 5;
         this.y1;
         this.x1;
         this.count = 0;
-        this.multiply = 0;
-
 
     }
 
@@ -25,22 +20,10 @@ class Utox {
             [this.x + 1, this.y + 1]
         ];
     }
-
-
     getDirections(t) {
         this.newDirections();
-        var found = [];
 
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == t) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found;
+        return super.getDirections(t);
     }
 
     move() {
@@ -115,4 +98,3 @@ class Utox {
 }
 
 
-///////////////
