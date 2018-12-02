@@ -2,7 +2,7 @@
 var xQanak = 50;
 var yQanak = 50;
 var matrix = [];
-var side = 50;
+var side = 10;
 var grassArr = [];
 var utich = [];
 var gisho = [];
@@ -78,7 +78,7 @@ function draw() {
                 rect(x * side, y * side, side, side);
             }
             else if (matrix[y][x] == 5) {
-                fill('#01a3c8');
+                fill("blue");
                 rect(x * side, y * side, side, side);
             }
 

@@ -1,7 +1,7 @@
 class Utox extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index);
-        this.energy = 5;
+        this.energy = 3;
         this.y1;
         this.x1;
         this.count = 0;
