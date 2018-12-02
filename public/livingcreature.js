@@ -14,7 +14,6 @@ class LivingCreature {
             [this.x, this.y + 1],
             [this.x + 1, this.y + 1]
         ];
-
     }
     getDirections(character) {
         var found = [];
@@ -30,5 +29,4 @@ class LivingCreature {
         }
         return found;
     }
-
 }

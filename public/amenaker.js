@@ -1,30 +1,4 @@
-class Amen {
-    constructor(x, y, ind) {
-        this.index = ind;
-        this.x = x;
-        this.y = y;
-        this.energy = 5;
-        this.y1;
-        this.x1;
-        this.multiply = 0;
-    }
-    newDirections() {
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-    }
-
-
-
-
-
+class Amen extends Utox {
 
     chooseCell(character) {
         this.newDirections();

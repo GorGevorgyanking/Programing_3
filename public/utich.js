@@ -5,9 +5,7 @@ class Utox extends LivingCreature {
         this.y1;
         this.x1;
         this.count = 0;
-
     }
-
     newDirections() {
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -22,10 +20,8 @@ class Utox extends LivingCreature {
     }
     getDirections(t) {
         this.newDirections();
-
         return super.getDirections(t);
     }
-
     move() {
         var emptyCord = this.getDirections(0);
         var g = random(emptyCord);
@@ -36,10 +32,7 @@ class Utox extends LivingCreature {
             matrix[y][x] = 2;
             this.x = x;
             this.y = y;
-
-
         }
-
     }
     eat() {
         var uteliq = this.getDirections(1);
@@ -61,8 +54,6 @@ class Utox extends LivingCreature {
                 this.mul();
                 this.energy = 5;
             }
-
-
         }
         else {
             this.move();
@@ -85,7 +76,6 @@ class Utox extends LivingCreature {
 
         }
     }
-
     die() {
         matrix[this.y][this.x] = 0;
         for (var i in utich) {
@@ -94,7 +84,6 @@ class Utox extends LivingCreature {
             }
         }
     }
-
 }
 
 

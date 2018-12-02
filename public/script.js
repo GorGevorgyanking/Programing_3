@@ -1,9 +1,8 @@
 
-
 var xQanak = 50;
 var yQanak = 50;
 var matrix = [];
-var side = 10;
+var side = 50;
 var grassArr = [];
 var utich = [];
 var gisho = [];
@@ -23,7 +22,6 @@ function setup() {
 
     frameRate(1);
     createCanvas(matrix[0].length * side, matrix.length * side);
-
     background('gray');
 
     for (var y = 0; y < matrix.length; y++) {
@@ -52,10 +50,6 @@ function setup() {
         }
     }
 }
-
-
-
-
 
 function draw() {
 
@@ -106,13 +100,4 @@ function draw() {
         hov[i].eat();
     }
 
-
-
-
-
-
 }
-
-
-
-
