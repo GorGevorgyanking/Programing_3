@@ -1,4 +1,4 @@
-class Hov extends Utox {
+module.exports = class Hov extends Utox {
 
     getDirections(t) {
         this.newDirections();

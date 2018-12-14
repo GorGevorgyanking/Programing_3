@@ -1,5 +1,5 @@
-class Grass extends LivingCreature {
-    
+
+module.exports = class Grass extends LivingCreature {
 
     mul() {
         this.multiply++;

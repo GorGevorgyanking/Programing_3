@@ -1,4 +1,4 @@
-class Amen extends Utox {
+module.exports = class Amen extends Utox {
 
     chooseCell(character) {
         this.newDirections();

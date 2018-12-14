@@ -1,4 +1,4 @@
-class Gisho extends Utox {
+module.exports = class Gisho extends Utox {
 
     getDirections(t) {
         this.newDirections();

@@ -14,7 +14,7 @@ function setup() {
     for (var y = 0; y < yQanak; y++) {
         matrix[y] = [];
         for (var x = 0; x < xQanak; x++) {
-            matrix[y][x] = Math.round(random(4));
+            matrix[y][x] = Math.round(random(5));
 
         }
     }
@@ -39,13 +39,14 @@ function setup() {
                 gisho.push(gs);
             }
             else if (matrix[y][x] == 4) {
+                var hov = new Hov(x, y, );
+                hov.push(hov);
+            }
+            else if (matrix[y][x] == 4) {
                 var am = new Amen(x, y, 4);
                 amen.push(am);
             }
-            else if (matrix[y][x] == 5) {
-                var hov = new Hov(x, y, 4);
-                hov.push(hov);
-            }
+            
 
         }
     }
@@ -79,7 +80,7 @@ function draw() {
             }
             else if (matrix[y][x] == 5) {
                 fill("blue");
-                rect(x * side, y * side, side, side);
+             rect(x * side, y * side, side, side);
             }
 
         }

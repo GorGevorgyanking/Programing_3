@@ -1,4 +1,4 @@
-class Utox extends LivingCreature {
+module.exports = class Utox extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index);
         this.energy = 3;
