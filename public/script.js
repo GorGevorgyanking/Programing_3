@@ -24,33 +24,33 @@ function setup() {
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('gray');
 
-    for (var y = 0; y < matrix.length; y++) {
-        for (var x = 0; x < matrix[y].length; x++) {
-            if (matrix[y][x] == 1) {
-                var gr = new Grass(x, y, 1);
-                grassArr.push(gr);
-            }
-            else if (matrix[y][x] == 2) {
-                var ut = new Utox(x, y, 2);
-                utich.push(ut);
-            }
-            else if (matrix[y][x] == 3) {
-                var gs = new Gisho(x, y, 3);
-                gisho.push(gs);
-            }
-            else if (matrix[y][x] == 4) {
-                var hov = new Hov(x, y, );
-                hov.push(hov);
-            }
-            else if (matrix[y][x] == 4) {
-                var am = new Amen(x, y, 4);
-                amen.push(am);
-            }
+//     for (var y = 0; y < matrix.length; y++) {
+//         for (var x = 0; x < matrix[y].length; x++) {
+//             if (matrix[y][x] == 1) {
+//                 var gr = new Grass(x, y, 1);
+//                 grassArr.push(gr);
+//             }
+//             else if (matrix[y][x] == 2) {
+//                 var ut = new Utox(x, y, 2);
+//                 utich.push(ut);
+//             }
+//             else if (matrix[y][x] == 3) {
+//                 var gs = new Gisho(x, y, 3);
+//                 gisho.push(gs);
+//             }
+//             else if (matrix[y][x] == 4) {
+//                 var hov = new Hov(x, y, );
+//                 hov.push(hov);
+//             }
+//             else if (matrix[y][x] == 4) {
+//                 var am = new Amen(x, y, 4);
+//                 amen.push(am);
+//             }
             
 
-        }
-    }
-}
+//         }
+//     }
+// }
 
 function draw() {
 
@@ -101,4 +101,5 @@ function draw() {
         hov[i].eat();
     }
 
+}
 }

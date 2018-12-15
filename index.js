@@ -12,14 +12,13 @@ app.listen(3000, function () {
 });
 
 
-var cnox = require("./public/livingcreature");
-var grass = require("./public/grass");
-/*
-var utich = require("./public/utich");
-var hoviv = require("./public/hoviv");
-var amenaker = require("./public/amenaker");
-var gishatich = require("./public/gishatich");
+/*var cnox = require("./modules/livingcreature");
+var grass = require("./modules/grass");
+var utich = require("./modules/utich");
+var hoviv = require("./modules/hoviv");
+var amenaker = require("./modules/amenaker");
+var gishatich = require("./modules/gishatich");
+
+
 */
-
-
 
