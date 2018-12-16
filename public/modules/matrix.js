@@ -5,12 +5,12 @@ gisho = [];
  amen = [];
 hov = [];
 
-var LivingCreature = require("./livingcreature");
-var Grass = require("./grass");
-var Utox = require("./utich");
-var Hov = require("./hoviv");
-var Amen = require("./amenaker");
-var Gisho = require("./gishatich");
+ LivingCreature = require("./livingcreature");
+ Grass = require("./grass");
+ Utox = require("./utich");
+ Hov = require("./hoviv");
+ Amen = require("./amenaker");
+ Gisho = require("./gishatich");
 
 
 matrix = [];
@@ -42,8 +42,8 @@ for (var y = 0; y < matrix.length; y++) {
             var hovo = new Hov(x, y);
             hov.push(hovo);
         }
-        else if (matrix[y][x] == 4) {
-            var am = new Amen(x, y, 4);
+        else if (matrix[y][x] == 5) {
+            var am = new Amen(x, y, 5);
             amen.push(am);
         }
 

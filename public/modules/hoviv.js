@@ -6,7 +6,7 @@ module.exports = class Hov extends Utox {
         return super.getDirections(t);
     }
     chooseCell(character) {
-        this.getNewCoordinates();
+        this.newDirections();
         var found = [];
         for (var i in this.directions) {
             var x = this.directions[i][0];
@@ -36,8 +36,8 @@ module.exports = class Hov extends Utox {
     eat() {
         var uteliq = this.chooseCell(3);
         var uteliq2 = this.chooseCell(4);
-        var axb = uteliq.concat(uteliq1.concat(uteliq2));
-        var kerac = random(axb);
+        var axb = uteliq.concat(uteliq.concat(uteliq2));
+        var kerac = Math.floor(Math.random()*(axb));
 
 
         if (kerac) {
@@ -57,7 +57,7 @@ module.exports = class Hov extends Utox {
             }
         }
 
-        else if (matrix[y][x] == 5) {
+        else if (matrix[y][x] == 4) {
             matrix[this.y][this.x] = 0;
             matrix[y][x] = 4;
             this.x = x;

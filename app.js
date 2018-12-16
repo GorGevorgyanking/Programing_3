@@ -1,31 +1,32 @@
+LivingCreature = require("./public/modules/livingcreature");
+Grass = require("./public/modules/grass");
+Utox = require("./public/modules/utich");
+Hov = require("./public/modules/hoviv");
+Amen = require("./public/modules/amenaker");
+Gisho = require("./public/modules/gishatich");
+
+
 var express = require('express');
-var matrix0 = require('./modules/matrix.js');
+var matrix = require('./public/modules/matrix.js');
 var path = require('path');
 var app = express();
 
-// Define the port to run on
-app.set('port', process.env.PORT || 3000);
+app.use(express.static("public"));
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Listen for requests
-var server = app.listen(app.get('port'), function() {
-  var port = server.address().port;
-  console.log('Magic happens on port ' + port);
+app.get("/", function (req, res) {
+   res.redirect("index.html");
 });
+
+app.listen(3000, function () {
+   console.log("Example is running on port 3000");
+});
+
 
 var time = frameRate(5);
  function  frameRate (frameCount)
  {
    return 1000/frameCount;
  }
-
-
-
-
-
-
-
 
 function draw() {
 
@@ -41,10 +42,10 @@ for (var i in gisho) {
 for (var i in amen) {
     amen[i].eat();
 }
-for (var i in hov) {
+/*for (var i in hov) {
     hov[i].eat();
 }
-
+*/
 }
 
 

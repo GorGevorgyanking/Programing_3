@@ -1,4 +1,4 @@
-var Utox = require("./utich");
+ Utox = require("./utich");
 module.exports = class Amen extends Utox {
 
     chooseCell(character) {
@@ -35,7 +35,7 @@ module.exports = class Amen extends Utox {
 
     move() {
         var emptyCord = this.chooseCell(0);
-        var g = random(emptyCord);
+        var g = Math.floor(Math.random()*(emptyCord));
         if (g) {
             var x = g[0];
             var y = g[1];
@@ -50,7 +50,7 @@ module.exports = class Amen extends Utox {
 
     eat() {
         var uteliq = this.chooseCell2(1, 2, 3);
-        var kerac = random(uteliq);
+        var kerac =Math.floor(Math.random()*(uteliq));
 
 
         if (kerac) {

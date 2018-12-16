@@ -1,4 +1,4 @@
-var Utox = require("./utich");
+Utox = require("./utich");
 module.exports = class Gisho extends Utox {
 
     getDirections(t) {
