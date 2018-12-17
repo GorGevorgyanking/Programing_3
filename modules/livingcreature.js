@@ -1,4 +1,4 @@
- module.exports = class LivingCreature {
+module.exports = class LivingCreature {
     constructor(x, y, index) {
         this.x = x;
         this.y = y;
@@ -15,7 +15,7 @@
             [this.x + 1, this.y + 1]
         ];
     }
-    getDirections(character) {
+    getDirections(character,matrix) {
         var found = [];
         for (var i in this.directions) {
             var x = this.directions[i][0];

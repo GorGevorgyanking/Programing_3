@@ -23,8 +23,8 @@ module.exports = class Utox extends LivingCreature {
         this.newDirections();
         return super.getDirections(t);
     }
-    move() {
-        var emptyCord = this.getDirections(0);
+    move(matrix) {
+        var emptyCord = this.getDirections(0,matrix);
         var g = Math.floor(Math.random()*(emptyCord));
         if (g) {
             var x = g[0];
@@ -35,8 +35,30 @@ module.exports = class Utox extends LivingCreature {
             this.y = y;
         }
     }
-    eat() {
-        var uteliq = this.getDirections(1);
+    mul(matrix) {
+
+        var emptyg1 = this.getDirections(0,matrix);
+        var g1 = random(emptyg1);
+        if (g1) {
+            var x = g1[0];
+            var y = g1[1];
+            var ut = new Utox(x, y, this.index);
+            utich.push(ut);
+            matrix[y][x] = 2;
+
+        }
+    }
+    die(matrix) {
+        matrix[this.y][this.x] = 0;
+        for (var i in utich) {
+            if (this.x == utich[i].x && this.y == utich[i].y) {
+                utich.splice(i, 1);
+            }
+        }
+    } 
+    
+    eat(matrix) {
+        var uteliq = this.getDirections(1,matrix);
         var kerac = Math.floor(Math.random()*(uteliq));
         if (kerac) {
             var x = kerac[0];
@@ -52,39 +74,19 @@ module.exports = class Utox extends LivingCreature {
             }
             this.energy++;
             if (this.energy >= 10) {
-                this.mul();
+                this.mul(matrix);
                 this.energy = 5;
             }
         }
         else {
-            this.move();
+            this.move(matrix);
             this.energy--;
             if (this.energy == 0) {
-                this.die();
+                this.die(matrix);
             }
         }
     }
-    mul() {
-
-        var emptyg1 = this.getDirections(0);
-        var g1 = random(emptyg1);
-        if (g1) {
-            var x = g1[0];
-            var y = g1[1];
-            var ut = new Utox(x, y, this.index);
-            utich.push(ut);
-            matrix[y][x] = 2;
-
-        }
-    }
-    die() {
-        matrix[this.y][this.x] = 0;
-        for (var i in utich) {
-            if (this.x == utich[i].x && this.y == utich[i].y) {
-                utich.splice(i, 1);
-            }
-        }
-    }
+    
 }
 
 
