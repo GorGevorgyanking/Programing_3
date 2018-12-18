@@ -1,7 +1,7 @@
 var Utox = require("./utich");
 module.exports = class Amen extends Utox {
 
-    chooseCell(character) {
+    chooseCell(character,matrix) {
         this.newDirections();
         var found = [];
         for (var i in this.directions) {
@@ -16,8 +16,8 @@ module.exports = class Amen extends Utox {
         }
         return found;
     }
-    chooseCell2(ind, ind1, ind2) {
-        this.newDirections();
+    chooseCell2(ind, ind1, ind2,matrix) {
+        this.newDirections(matrix);
         var found = [];
         for (var i in this.directions) {
             var x = this.directions[i][0];
@@ -33,8 +33,8 @@ module.exports = class Amen extends Utox {
     }
 
 
-    move() {
-        var emptyCord = this.chooseCell(0);
+    move(matrix) {
+        var emptyCord = this.chooseCell(0,matrix);
         var g = Math.floor(Math.random()*(emptyCord));
         if (g) {
             var x = g[0];
@@ -47,9 +47,47 @@ module.exports = class Amen extends Utox {
 
         }
     }
+    die(matrix) {
+        matrix[this.y][this.x] = 0;
+        for (var i in amen) {
+            if (this.x == amen[i].x && this.y == amen[i].y) {
+                amen.splice(i, 1);
+            }
+        }
 
-    eat() {
-        var uteliq = this.chooseCell2(1, 2, 3);
+
+    }
+
+
+
+
+
+
+    mul(matrix) {
+        var emptyg1 = this.getDirections(0,matrix);
+
+        var g1 =  Math.floor(Math.random()(emptyg1));
+        if (g1) {
+            var x = g1[0];
+            var y = g1[1];
+
+            var am = new Amen(x, y, this.index);
+            amen.push(am);
+
+            matrix[y][x] = 4;
+
+
+
+
+
+        }
+
+
+    }
+
+
+    eat(matrix) {
+        var uteliq = this.chooseCell2(1, 2, 3,matrix);
         var kerac =Math.floor(Math.random()*(uteliq));
 
 
@@ -96,7 +134,7 @@ module.exports = class Amen extends Utox {
             }
 
             if (this.energy >= 50) {
-                this.mul();
+                this.mul(matrix);
                 this.energy = 5;
             }
 
@@ -105,54 +143,17 @@ module.exports = class Amen extends Utox {
 
 
         else {
-            this.move();
+            this.move(matrix);
             this.energy--;
             if (this.energy = 0) {
-                this.die();
+                this.die(matrix);
             }
         }
 
 
     }
 
-    die() {
-        matrix[this.y][this.x] = 0;
-        for (var i in amen) {
-            if (this.x == amen[i].x && this.y == amen[i].y) {
-                amen.splice(i, 1);
-            }
-        }
-
-
-    }
-
-
-
-
-
-
-    mul() {
-        var emptyg1 = this.getDirections(0);
-
-        var g1 = random(emptyg1);
-        if (g1) {
-            var x = g1[0];
-            var y = g1[1];
-
-            var am = new Amen(x, y, this.index);
-            amen.push(am);
-
-            matrix[y][x] = 4;
-
-
-
-
-
-        }
-
-
-    }
-
+    
 
 }
 

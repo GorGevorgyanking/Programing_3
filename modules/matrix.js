@@ -34,14 +34,15 @@ for (var y = 0; y < matrix.length; y++) {
             var gs = new Gisho(x, y, 3);
             gisho.push(gs);
         }
-        else if (matrix[y][x] == 4) {
-            var hovo = new Hov(x, y);
-            hov.push(hovo);
-        }
         else if (matrix[y][x] == 5) {
             var am = new Amen(x, y, 5);
             amen.push(am);
         }
+        else if (matrix[y][x] == 4) {
+            var hovo = new Hov(x, y,4);
+            hov.push(hovo);
+        }
+      
     }
 }
 module.exports = {

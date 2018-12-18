@@ -29,7 +29,7 @@ var objects = require('./modules/matrix.js');
 
 var matrix = objects.matrix;
 var grassArr = objects.grassArr;
-var utich = objects.utich;
+ var utich = objects.utich;
 var gisho = objects.gisho;
 var amen = objects.amen;
 var hov = objects.hov;
@@ -40,23 +40,27 @@ function frameRate(frameCount) {
 }
 
 function draw() {
-    for (var i in grassArr) {
+   for (var i in grassArr) {
         grassArr[i].mul(matrix);
     }
     for (var i in utich) {
         utich[i].eat(matrix);
-    }/*
-    for (var i in gisho) {
-        gisho[i].eat();
     }
+    
+    for (var i in gisho) {
+        gisho[i].eat(matrix);
+    }
+    
     for (var i in amen) {
-        amen[i].eat();
-    }*/
-}
-setInterval(draw, time);
-/*for (var i in hov) {
-    hov[i].eat();
+        amen[i].eat(matrix);
+    }
+    
+}/*
+for (var i in hov) {
+    hov[i].eat(matrix);
 }
 */
+setInterval(draw, time);
+
 
 console.log(matrix);

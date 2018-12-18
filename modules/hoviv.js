@@ -1,12 +1,9 @@
 var Utox = require("./utich");
 module.exports = class Hov extends Utox {
 
-    getDirections(t) {
-        this.newDirections();
-        return super.getDirections(t);
-    }
-    chooseCell(character) {
-        this.newDirections();
+   
+    chooseCell(character,matrix) {
+        this.newDirections(matrix);
         var found = [];
         for (var i in this.directions) {
             var x = this.directions[i][0];
@@ -20,9 +17,9 @@ module.exports = class Hov extends Utox {
         }
         return found;
     }
-    move() {
-        var emptyCord = this.getDirections(0);
-        var g = random(emptyCord);
+    move(matrix) {
+        var emptyCord = this.chooseCell(0,matrix);
+        var g = Math.floor(Math.random()*(emptyCord));
         if (g) {
             var x = g[0];
             var y = g[1];
@@ -33,11 +30,9 @@ module.exports = class Hov extends Utox {
         }
     }
 
-    eat() {
-        var uteliq = this.chooseCell(3);
-        var uteliq2 = this.chooseCell(4);
-        var axb = uteliq.concat(uteliq.concat(uteliq2));
-        var kerac = Math.floor(Math.random()*(axb));
+    eat(matrix) {
+        var uteliq = this.chooseCell(3,4,matrix);
+        var kerac = Math.floor(Math.random()*(uteliq));
 
 
         if (kerac) {
@@ -69,7 +64,7 @@ module.exports = class Hov extends Utox {
             }
         }
         else {
-            this.move();
+            this.move(matrix);
         }
     }
 

@@ -17,7 +17,7 @@ var matrix = [];
 
 function setup() {
     socket = io();
-    frameRate(0);
+    frameRate(5);
     background('gray');
 
     socket.on("first matrix", function (mtx) {
