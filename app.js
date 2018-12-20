@@ -23,6 +23,26 @@ server.listen(3000);
 
 io.on('connection', function (socket) {
     socket.emit("first matrix", matrix);
+
+    setInterval(function(){
+        for (var i in grassArr) {
+            
+            grassArr[i].mul(objects);
+        }
+        /*for (var i in utich) {
+            utich[i].eat(matrix);
+        }
+        
+        for (var i in gisho) {
+            gisho[i].eat(matrix);
+        }
+        
+        for (var i in amen) {
+            amen[i].eat(matrix);
+        }*/
+
+        socket.emit("refresh", matrix);
+    }, time);
 });
 
 var objects = require('./modules/matrix.js');
@@ -39,28 +59,8 @@ function frameRate(frameCount) {
     return 1000 / frameCount;
 }
 
-function draw() {
-   for (var i in grassArr) {
-        grassArr[i].mul(matrix);
-    }
-    for (var i in utich) {
-        utich[i].eat(matrix);
-    }
-    
-    for (var i in gisho) {
-        gisho[i].eat(matrix);
-    }
-    
-    for (var i in amen) {
-        amen[i].eat(matrix);
-    }
-    
-}/*
+/*
 for (var i in hov) {
     hov[i].eat(matrix);
 }
 */
-setInterval(draw, time);
-
-
-console.log(matrix);
