@@ -16,7 +16,7 @@ var xQanak = 50;
 for (var y = 0; y < yQanak; y++) {
     matrix[y] = [];
     for (var x = 0; x < xQanak; x++) {
-        matrix[y][x] = Math.floor(Math.random() * 6);
+        matrix[y][x] = Math.floor(Math.random() * 5);
     }
 }
 

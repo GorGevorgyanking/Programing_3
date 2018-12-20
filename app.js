@@ -25,10 +25,12 @@ io.on('connection', function (socket) {
     socket.emit("first matrix", matrix);
 
     setInterval(function(){
+        
         for (var i in grassArr) {
             
             grassArr[i].mul(objects);
         }
+        
         for (var i in utich) {
             utich[i].eat(objects);
         }
@@ -37,11 +39,11 @@ io.on('connection', function (socket) {
             gisho[i].eat(objects);
            
 
-        }/*
-        /*
+        }
+        
         for (var i in amen) {
-            amen[i].eat(matrix);
-        }*/
+            amen[i].eat(objects);
+        }
 
         socket.emit("refresh", matrix);
     }, time);

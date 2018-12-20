@@ -13,20 +13,23 @@ module.exports = class Gisho extends Utox {
     }
     
     move(objects) {
-        
-        var emptyCord = this.chooseCell(1, objects.matrix);
-        var g =random(emptyCord);
+        var emptyCord = this.chooseCell(0,objects.matrix);
+
+        var g = random(emptyCord);
+
         if (g) {
             var x = g[0];
             var y = g[1];
             objects.matrix[this.y][this.x] = 0;
-            objects.matrix[y][x] = 3;
-            this.x = x;
-            this.y = y;
+            for (var i in objects.grassArr) {
+                if (x == objects.grassArr[i].x && y == objects.grassArr[i].y) {
+                    objects.grassArr.splice(i, 1);
+              
+                }
+            
+            }
         }
     }
-        
-
     die(objects) {
         objects.matrix[this.y][this.x] = 0;
         for (var i in objects.gisho) {
@@ -59,9 +62,11 @@ module.exports = class Gisho extends Utox {
         var uteliq = this.chooseCell(2,objects.matrix);
         var kerac = random(uteliq);
         if (kerac) {
+
+
             var x = kerac[0];
             var y = kerac[1];
-            if (objects.matrix[y][x] == 2){
+
             objects.matrix[this.y][this.x] = 0;
             objects.matrix[y][x] = 3;
             this.x = x;
@@ -71,8 +76,7 @@ module.exports = class Gisho extends Utox {
                     objects.utich.splice(i, 1);
                 }
             }
-        }
-        this.energy++;
+            this.energy++;
             if (this.energy >= 15) {
                 this.mul(objects);
                 this.energy = 5;
