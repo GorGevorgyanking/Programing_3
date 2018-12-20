@@ -13,28 +13,10 @@ module.exports = class Gisho extends Utox {
     }
     
     move(objects) {
+        
         var emptyCord = this.chooseCell(1, objects.matrix);
-     
-
-        var g = random(emptyCord);
-
+        var g =random(emptyCord);
         if (g) {
-            var x = g[0];
-            var y = g[1];
-            objects.matrix[this.y][this.x] = 0;
-            for (var i in objects.grassArr) {
-                if (x == objects.grassArr[i].x && y == objects.grassArr[i].y) {
-                    objects.grassArr.splice(i, 1);
-                }
-            }
-            objects.matrix[y][x] = 3;
-            this.x = x;
-            this.y = y;
-
-        }
-        var emptyCord1 = this.chooseCell(0, objects.matrix);
-        var g1 =random(emptyCord1);
-        if (g1) {
             var x = g[0];
             var y = g[1];
             objects.matrix[this.y][this.x] = 0;
@@ -79,6 +61,7 @@ module.exports = class Gisho extends Utox {
         if (kerac) {
             var x = kerac[0];
             var y = kerac[1];
+            if (objects.matrix[y][x] == 2){
             objects.matrix[this.y][this.x] = 0;
             objects.matrix[y][x] = 3;
             this.x = x;
@@ -89,8 +72,7 @@ module.exports = class Gisho extends Utox {
                 }
             }
         }
-            this.energy++;
-            
+        this.energy++;
             if (this.energy >= 15) {
                 this.mul(objects);
                 this.energy = 5;
@@ -116,4 +98,4 @@ module.exports = class Gisho extends Utox {
 
         }
 
-  
+    }
