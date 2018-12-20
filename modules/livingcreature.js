@@ -15,7 +15,7 @@ module.exports = class LivingCreature {
             [this.x + 1, this.y + 1]
         ];
     }
-    getDirections(character,matrix) {
+    chooseCell(character,matrix) {
         var found = [];
         for (var i in this.directions) {
             var x = this.directions[i][0];

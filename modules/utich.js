@@ -1,3 +1,10 @@
+function random(arr) {
+    var random = Math.floor(Math.random() * arr.length);
+    return arr[random];
+}
+
+
+
 var LivingCreature = require("./livingcreature");
 module.exports = class Utox extends LivingCreature {
     constructor(x, y, index) {
@@ -19,75 +26,75 @@ module.exports = class Utox extends LivingCreature {
             [this.x + 1, this.y + 1]
         ];
     }
-    getDirections(t, matrix) {
+    chooseCell(t, objects) {
         this.newDirections();
-        return super.getDirections(t, matrix );
+        return super.chooseCell(t, objects );
     }
 
  
-    move(matrix) {
-        var emptyCord = this.getDirections(0, matrix);
-        var g = Math.floor(Math.random() * (emptyCord));
+    move(objects) {
+        var emptyCord = this.chooseCell(0, objects.matrix);
+        var g =random(emptyCord);
         if (g) {
             var x = g[0];
             var y = g[1];
-            matrix[this.y][this.x] = 0;
-            matrix[y][x] = 2;
+            objects.matrix[this.y][this.x] = 0;
+            objects.matrix[y][x] = 2;
             this.x = x;
             this.y = y;
         }
     }
 
-    mul(matrix) {
+    mul(objects) {
 
-        var emptyg1 = this.getDirections(0, matrix);
-        var g1 = Math.floor(Math.random() * (emptyg1));
+        var emptyg1 = this.chooseCell(0, objects.matrix);
+        var g1 = random(emptyg1);
         if (g1) {
             var x = g1[0];
             var y = g1[1];
             var ut = new Utox(x, y, this.index);
-            utich.push(ut);
-            matrix[y][x] = 2;
+            objects.utich.push(ut);
+            objects.matrix[y][x] = 2;
 
         }
     }
 
-    die(matrix,utich) {
-        matrix[this.y][this.x] = 0;
-        for (var i in utich) {
-            if (this.x == utich[i].x && this.y == utich[i].y) {
-                utich.splice(i, 1);
+    die(objects) {
+        objects.matrix[this.y][this.x] = 0;
+        for (var i in objects.utich) {
+            if (this.x == objects.utich[i].x && this.y == objects.utich[i].y) {
+                objects.utich.splice(i, 1);
             }
         }
     }
-    eat(matrix) {
-        var uteliq = this.getDirections(1, matrix);
-        var kerac = Math.floor(Math.random() * (uteliq));
+    eat(objects) {
+        var uteliq = this.chooseCell(1, objects.matrix);
+        var kerac = random(uteliq);
         if (kerac) {
             var x = kerac[0];
             var y = kerac[1];
-            matrix[this.y][this.x] = 0;
-            matrix[y][x] = 2;
+            objects.matrix[this.y][this.x] = 0;
+            objects.matrix[y][x] = 2;
             this.x = x;
             this.y = y;
-            for (var i in grassArr) {
-                if (x == grassArr[i].x && y == grassArr[i].y) {
-                    grassArr.splice(i, 1);
+            for (var i in objects.grassArr) {
+                if (x == objects.grassArr[i].x && y == objects.grassArr[i].y) {
+                    objects.grassArr.splice(i, 1);
                 }
             }
             this.energy++;
 
             if (this.energy >= 10) {
-                this.mul(matrix);
+                this.mul(objects);
                 this.energy = 5;
             }
         }
 
         else {
-            this.move(matrix);
+            this.move(objects);
             this.energy--;
             if (this.energy == 0) {
-                this.die(matrix);
+                this.die(objects);
             }
 
         }

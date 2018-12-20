@@ -57,7 +57,7 @@ function draw() {
             else if (matrix[y][x] == 3) {
                 fill("red");
                 rect(x * side, y * side, side, side);
-            }
+            }/*
             else if (matrix[y][x] == 4) {
                 fill("black");
                 rect(x * side, y * side, side, side);
@@ -66,7 +66,7 @@ function draw() {
                 fill("blue");
                 rect(x * side, y * side, side, side);
             }
-
+*/
         }
-    }
+       }
 }

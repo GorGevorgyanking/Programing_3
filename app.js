@@ -29,14 +29,16 @@ io.on('connection', function (socket) {
             
             grassArr[i].mul(objects);
         }
-        /*for (var i in utich) {
-            utich[i].eat(matrix);
+        for (var i in utich) {
+            utich[i].eat(objects);
         }
         
         for (var i in gisho) {
-            gisho[i].eat(matrix);
-        }
-        
+            gisho[i].eat(objects);
+           
+
+        }/*
+        /*
         for (var i in amen) {
             amen[i].eat(matrix);
         }*/
@@ -64,3 +66,8 @@ for (var i in hov) {
     hov[i].eat(matrix);
 }
 */
+
+function rundom(num) {
+    var random = Math.floor(Math.random() * num.lenght);
+    return num[random];
+}
