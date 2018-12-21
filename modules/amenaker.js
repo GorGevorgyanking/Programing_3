@@ -57,6 +57,11 @@ module.exports = class Amen extends Utox {
         for (var i in objects.amen) {
             if (this.x == objects.amen[i].x && this.y == objects.amen[i].y) {
                 objects.amen.splice(i, 1);
+                var obj = {
+                        anun:'amenaker',
+                        patjar:'inqn iren',
+                    };
+                    obj_arr.push(obj);
             }
         }
 

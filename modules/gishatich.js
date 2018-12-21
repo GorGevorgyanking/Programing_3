@@ -2,104 +2,136 @@ function random(arr) {
     var random = Math.floor(Math.random() * arr.length);
     return arr[random];
 }
-
-
-var Utox = require("./utich");
-module.exports = class Gisho extends Utox {
-
-    chooseCell(t,objects) {
-        this.newDirections();
-        return super.chooseCell(t,objects );
+module.exports.Gishatich = class Gishatich{
+    constructor(x,y){
+        this.x = x;
+        this.y = y;
+        this.en = 5;
+        this.gorcakic = 0;
+        this.bool = true;
     }
-    
-    move(objects) {
-        var emptyCord = this.chooseCell(0,objects.matrix);
-
-        var g = random(emptyCord);
-
-        if (g) {
-            var x = g[0];
-            var y = g[1];
-            objects.matrix[this.y][this.x] = 0;
-            for (var i in objects.grassArr) {
-                if (x == objects.grassArr[i].x && y == objects.grassArr[i].y) {
-                    objects.grassArr.splice(i, 1);
-              
-                }
-            
-            }
-        }
+    cord(){
+        this.cords = [
+            [this.x - 1,this.y - 1],
+            [this.x    ,this.y - 1],
+            [this.x + 1,this.y - 1],
+            [this.x - 1,this.y    ],
+            [this.x + 1,this.y    ],
+            [this.x - 1,this.y + 1],
+            [this.x    ,this.y + 1],
+            [this.x + 1,this.y + 1]
+        ];
+        return this.cords;
     }
-    die(objects) {
-        objects.matrix[this.y][this.x] = 0;
-        for (var i in objects.gisho) {
-            if (this.x == objects.gisho[i].x && this.y == objects.gisho[i].y) {
-                objects.gisho.splice(i, 1);
-            }
-        }
-
-
-    }
-    
-   
-    mul(objects) {
-        var emptyg1 = this.chooseCell(0,objects.matrix);
-
-        var g1 =  random(emptyg1);
-        if (g1) {
-            var x = g1[0];
-            var y = g1[1];
-
-            var gs = new Gisho(x, y, this.index);
-            objects.gisho.push(gs);
-
-           objects.matrix[y][x] = 3;
-        }
-    }
-    
-   
-    eat(objects) {
-        var uteliq = this.chooseCell(2,objects.matrix);
-        var kerac = random(uteliq);
-        if (kerac) {
-
-
-            var x = kerac[0];
-            var y = kerac[1];
-
-            objects.matrix[this.y][this.x] = 0;
-            objects.matrix[y][x] = 3;
-            this.x = x;
-            this.y = y;
-            for (var i in objects.utich) {
-                if (x == objects.utich[i].x && y == objects.utich[i].y) {
-                    objects.utich.splice(i, 1);
+    cordTrue(t){
+        var ret = this.cord();
+        var trueCord = [];
+        for(var i = 0;i<ret.length;i++)
+        {
+            if(ret[i][0] <= (/**/matrix[0].length - 1) && ret[i][0] >= 0 && ret[i][1] <= (/**/matrix.length - 1) && ret[i][1] >= 0)
+            {
+                if(/**/matrix[ret[i][1]][ret[i][0]] == t)
+                {
+                    trueCord.push(ret[i]);
                 }
             }
-            this.energy++;
-            if (this.energy >= 15) {
-                this.mul(objects);
-                this.energy = 5;
-            }
-
-
-        
-
-
-        else {
-            this.move(objects);
-            this.energy--;
-            if (this.energy <= 0) {
-                this.die(objects);
+        }
+        return trueCord;
+    }
+    mahanal(){
+        for(var i = 0;i</**/gisho.length;i++)
+        {
+            if(/**/gisho[i].x == this.x && /**/gisho[i].y == this.y){
+                if(this.bool == true)
+                {
+                    /**/matrix[this.y][this.x] = 0;
+                }
+                else{
+                    /**/matrix[this.y][this.x] = 1;
+                }
+                /**/gisho.splice(i, 1);
+                var obj = {
+                    anun        : 'gishatich',
+                    patjar  : 'sovic'
+                }
+                /**/obj_arr.push(obj);
             }
         }
-
     }
-
-   
-
-
-
+    bazmanal(){
+        if(exanak==1){
+        var arrcord = random(this.cordTrue(0));
+        if(arrcord){
+            /**/gisho.push(new Gishatich(arrcord[0],arrcord[1]));
+            /**/matrix[arrcord[1]][arrcord[0]] = 3;
+            this.gorcakic = 0;
         }
-
     }
+    }
+    move(){
+        if(random(this.cordTrue(2)))
+        {
+            var arrcord = random(this.cordTrue(2));
+            /**/matrix[arrcord[1]][arrcord[0]] = 3;
+            for(var i = 0;i</**/utich.length;i++)
+            {
+                if(/**/utich[i].x == arrcord[0] && /**/utich[i].y == arrcord[1]){
+                    /**/utich.splice(i, 1);
+                    var obj = {
+                    anun        : 'xotaker',
+                    patjar  : 'gishatchi koxmic'
+                }
+                /**/obj_arr.push(obj);
+                }
+            }
+            if(this.bool == true)
+            {
+                /**/matrix[this.y][this.x] = 0;
+            }
+            else{
+                /**/matrix[this.y][this.x] = 1;
+            }
+            this.x = arrcord[0];
+            this.y = arrcord[1];
+            this.en = 5;
+            this.gorcakic++;
+            this.bool = true;
+        }
+        else if(random(this.cordTrue(1))){
+            var arrcord = random(this.cordTrue(1));
+            /**/matrix[arrcord[1]][arrcord[0]] = 3;
+            if(this.bool == true)
+            {
+                /**/matrix[this.y][this.x] = 0;
+            }
+            else{
+                /**/matrix[this.y][this.x] = 1;
+            }
+            this.x = arrcord[0];
+            this.y = arrcord[1];
+            this.en--;
+            this.bool = false;
+        }
+        else if(random(this.cordTrue(0))){
+            var arrcord = random(this.cordTrue(0));
+            /**/matrix[arrcord[1]][arrcord[0]] = 3;
+            if(this.bool == true)
+            {
+                /**/matrix[this.y][this.x] = 0;
+            }
+            else{
+                /**/matrix[this.y][this.x] = 1;
+            }
+            this.x = arrcord[0];
+            this.y = arrcord[1];
+            this.en--;
+            this.bool = true;
+        }
+        if(this.en <= 0){
+            this.mahanal();
+        }
+        if(this.gorcakic >= 5){
+            this.bazmanal();
+        }
+    }
+}

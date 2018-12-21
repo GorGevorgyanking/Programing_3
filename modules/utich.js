@@ -33,6 +33,7 @@ module.exports = class Utox extends LivingCreature {
 
  
     move(objects) {
+       
         var emptyCord = this.chooseCell(0, objects.matrix);
         var g =random(emptyCord);
         if (g) {
@@ -43,10 +44,11 @@ module.exports = class Utox extends LivingCreature {
             this.x = x;
             this.y = y;
         }
+        
     }
 
     mul(objects) {
-
+        if(exanak==0){
         var emptyg1 = this.chooseCell(0, objects.matrix);
         var g1 = random(emptyg1);
         if (g1) {
@@ -55,7 +57,7 @@ module.exports = class Utox extends LivingCreature {
             var ut = new Utox(x, y, this.index);
             objects.utich.push(ut);
             objects.matrix[y][x] = 2;
-
+        }
         }
     }
 

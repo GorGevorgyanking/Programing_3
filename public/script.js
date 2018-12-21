@@ -1,74 +1,101 @@
-
-/*
-var socket;
-function main() {
-    socket = io.connect('http://localhost:3000');
-    socket.on('matrix', function (k) {
-       matrix=matrix;
-    });
-    
-}
-*/
-
 var side = 10;
-var socket;
-
+var socket = io.connect('http://localhost:3000/');
+var guyn = '';
 var matrix = [];
-
-function setup() {
-    socket = io();
-    frameRate(0);
+function setup(){
+    createCanvas(50 * side,50 * side);
     background('gray');
-
-    socket.on("first matrix", function (mtx) {
-        matrix = mtx;
-        
-        createCanvas(matrix[0].length * side, matrix.length * side);
-
-        socket.on("refresh", function(mtx){
-            matrix=mtx;
-            redraw();
-        });
-
-        /////HETO JNJEL
-    });
-
-    noLoop();
 }
-
-function draw() {
-    console.log(matrix);
-    for (var y = 0; y < matrix.length; y++) {
-        for (var x = 0; x < matrix[y].length; x++) {
-
-            if (matrix[y][x] == 1) {
-                fill("green");
-                rect(x * side, y * side, side, side);
-            }
-            else if (matrix[y][x] == 0) {
+function draw(){
+    socket.on('refresh',function(data){
+        matrix = data;
+    });
+    for(var i = 0;i<matrix.length;++i)
+    {
+        for(var j = 0;j<matrix[i].length;++j)
+        {
+            if(matrix[i][j] == 0)
+            {
                 fill("gray");
-                rect(x * side, y * side, side, side);
+                rect(i * side,j * side, side, side);
             }
-
-            else if (matrix[y][x] == 2) {
+            else if(matrix[i][j] == 1)
+            {
+                fill(guyn);
+                rect(i * side,j * side, side, side);
+            }
+            else if(matrix[i][j] == 2)
+            {
                 fill("yellow");
-                rect(x * side, y * side, side, side);
+                rect(i * side,j * side, side, side);
             }
-            else if (matrix[y][x] == 3) {
+            else if(matrix[i][j] == 3,6)
+            {
                 fill("red");
-                rect(x * side, y * side, side, side);
-                
+                rect(i * side,j * side, side, side);
             }
-            else if (matrix[y][x] == 4) {
+            else if(matrix[i][j] == 4)
+            {
                 fill("black");
-                rect(x * side, y * side, side, side);
+                rect(i * side,j * side, side, side);
             }
-            /*
-            else if (matrix[y][x] == 5) {
-                fill("blue");
-                rect(x * side, y * side, side, side);
-            }
-*/
         }
-       }
     }
+}
+$(document).ready(function(){
+        $('<h1></h1>').attr('class','h1_text').appendTo('body');
+        $('<div></div>').attr({
+            'id':'statica',
+        }).appendTo('body').css({
+            'width':'500px',
+            'height':'500px',
+            'position':'absolute',
+            'left':'600px',
+            'top':'0px',
+            'border':'solid black',
+            'overflow':'scroll'
+        });
+        socket.on('obj',function(data){
+            $('#statica').empty();
+            if(data != [])
+            {
+                for(var i = 0;i<data.length;++i){
+                    var anun = data[i].anun;
+                    var patjar = data[i].patjar;
+                    $('<p></p>').attr({
+                        'class':'text',
+                    }).appendTo('#statica').text(anun + '////////////' + patjar);
+                }
+            }
+        });
+        socket.on('number',function(data){
+            if(data == 0)
+            {
+                guyn = 'green';
+                $(document).ready(function(){
+                    $(".h1_text").text('Գարուն');
+                });
+            }
+            else if(data == 1)
+            {
+                guyn = 'lightgreen';
+                $(document).ready(function(){
+                    $(".h1_text").text('Ամառ');
+                });
+            }
+            else if(data == 2)
+            {
+                guyn = 'lightyellow';
+                $(document).ready(function(){
+                    $(".h1_text").text('Աշուն');
+                });
+            }
+            else if(data == 3)
+            {
+                guyn = 'lightblue';
+                $(document).ready(function(){
+                    $(".h1_text").text('Ձմեռ');
+                });
+            }
+        });
+    });
